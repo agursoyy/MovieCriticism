@@ -66,7 +66,7 @@ const Movie: FC<IProps> = (props) => {
           }
         </div>
         <h6>
-          <Link href={type === 'MOVIE' ? '/movie/detail' : '/tv/detail'} as={type === 'MOVIE' ? `/movie/detail/${id}` : `/movie/detail/${id}`}>
+          <Link href={type === 'MOVIE' ? '/movie/detail/[id]' : '/tv/detail/[id]'} as={type === 'MOVIE' ? `/movie/detail/${id}` : `/movie/detail/${id}`}>
             <a className="m-title">
               {title && title}
               {name && name}

@@ -149,7 +149,6 @@ export default class MyApp extends App<IProps> {
 
 }
 
-
 NProgress.configure({ showSpinner: false });
 
 Router.events.on('routeChangeStart', () => { NProgress.start(); });
