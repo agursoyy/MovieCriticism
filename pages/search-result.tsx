@@ -41,16 +41,17 @@ NowplayingMovies.getInitialProps = async ({ store, query }: INextPageContext): P
   if (isnum) {
     pageParam = Number(page);
   }
-  let typeParam = 'movie';
+  let typeParam: 'movie' | 'tv';
+  typeParam = 'movie';
   if (type === 'movie')
-    typeParam = type;
+    typeParam = 'movie';
   else if (type === 'tv')
     typeParam = 'tv';
 
   let queryWord = query.query ? query.query.toString() : '';
 
-  await Promise.all([store.movie.fetchSearchResult('movie', queryWord, pageParam), store.movie.fetchGenres()]);
-  return { type: 'movie' };
+  await Promise.all([store.movie.fetchSearchResult(typeParam, queryWord, pageParam), store.movie.fetchGenres()]);
+  return { type: typeParam };
 };
 
 
