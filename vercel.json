@@ -2,7 +2,7 @@
   "routes": [
     {
       "src": "/about",
-      "dest": "https://about.me"
+      "dest": "now-playing.html"
     },
     {
       "src": "/action",
