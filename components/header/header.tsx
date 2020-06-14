@@ -135,14 +135,14 @@ const Header: FC<IProps> = ({ store }) => {
                 :
                 <ul className="navbar-nav navbar authentication">
                   <li className="nav-item">
-                    <Link href="login">
+                    <Link href="/login">
                       <a className="nav-link">
                         login
                       </a>
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link href="signup">
+                    <Link href="/signup">
                       <a className="nav-link btn btn-link btn-signup" >
                         sign up
                       </a>
