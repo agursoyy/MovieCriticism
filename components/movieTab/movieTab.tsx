@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import './movieTab.scss';
-import { Link } from '../../routes';
+import Link from 'next/link';
 import Carousel from '../carousel';
 
 type IProps = {
@@ -39,8 +39,8 @@ const MovieTab: FC<IProps> = (props) => {
     <div className="movie-tab">
       <div className="th-title d-flex justify-content-between align-items-center">
         <h2>{title}</h2>
-        <Link route={show.popular ? 'popular-movies' : (show.nowPlaying ? 'now-playing-movies' : (show.topRated ? 'top-rated-movies' :
-          (show.upcoming ? 'upcoming-movies' : '')))}>
+        <Link href={show.popular ? '/movie/popular' : (show.nowPlaying ? '/movie/now-playing' : (show.topRated ? '/movie/top-rated' :
+          (show.upcoming ? 'movie/upcoming' : '')))}>
           <a>
             <span>
               View All

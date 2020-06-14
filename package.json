@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build app && next export app",
-    "start": "cross-env NODE_ENV=production NPM_CONFIG_PRODUCTION=false ts-node server/index.ts",
-    "now-build": "next build",
+    "dev": "next",
+    "build": "next build && next export",
+    "start": "next start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

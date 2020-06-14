@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import './authentication.scss';
 import Store from '../../stores';
 import { inject, observer } from 'mobx-react';
-import { Router } from '../../routes';
+import { useRouter } from 'next/router';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -20,6 +20,7 @@ const LoginSchema = Yup.object().shape({
 
 const Login: FC<Props> = ({ store }) => {
   const { auth: { login } } = store!;
+  const Router = useRouter();
 
   const handleServerErrors = (errors: Array<any>, setFieldError: (field: string, message: string) => void) => {
     let flags = { email: true, password: true };
@@ -53,7 +54,7 @@ const Login: FC<Props> = ({ store }) => {
                   const result = await login({ email: values.email, password: values.password });
                   const { auth } = result;
                   if (auth) {
-                    Router.pushRoute('home');
+                    Router.push('/');
                   }
                   else {
                     const { errors } = result;

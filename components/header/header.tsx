@@ -2,11 +2,11 @@ import React, { useEffect, useState, FC } from 'react';
 import $ from 'jquery';
 import './header.scss';
 import Store from '../../stores';
-import { Link, getURL, getRouteName } from '../../routes';
-import { useRouter } from 'next/router';
-import { Router } from '../../routes';
+import Link from 'next/link';
+import Router, { useRouter } from 'next/router';
 import { inject, observer } from 'mobx-react';
 import Logo from '../logo';
+
 
 interface IProps {
   store?: Store
@@ -58,9 +58,8 @@ const Header: FC<IProps> = ({ store }) => {
 
 
   const router = useRouter();
-  const activeLink = (routeName: string) => {  // name of the route
-    const current = router.asPath.split('?');
-    if (current[0] === getURL(routeName)) {
+  const activeLink = (route: string) => {  // name of the route
+    if (router.pathname === route) {
       return 'active';
     }
     return '';
@@ -75,7 +74,7 @@ const Header: FC<IProps> = ({ store }) => {
     <header id="t-header" className="absolute-header">
       <nav id="t-navbar" className="navbar navbar-expand-lg navbar-trans">
         <div className="container">
-          <Link route="home">
+          <Link href="/">
             <a className="navbar-brand" href="#">
               <Logo />
             </a>
@@ -88,29 +87,29 @@ const Header: FC<IProps> = ({ store }) => {
             <ul className="navbar-nav mr-auto navbar page-links">
 
               <li className="nav-item">
-                <Link route="now-playing-movies">
-                  <a className={`nav-link ${activeLink('now-playing-movies')}`}>
+                <Link href="/movie/now-playing">
+                  <a className={`nav-link ${activeLink('/movie/now-playing')}`}>
                     now playing
                  </a>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link route="popular-movies">
-                  <a className={`nav-link ${activeLink('popular-movies')}`}>
+                <Link href="/movie/popular">
+                  <a className={`nav-link ${activeLink('/movie/popular')}`}>
                     popular
                  </a>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link route="upcoming-movies">
-                  <a className={`nav-link ${activeLink('upcoming-movies')}`}>
+                <Link href="/movie/upcoming">
+                  <a className={`nav-link ${activeLink('/movie/upcoming')}`}>
                     coming soon
                  </a>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link route="top-rated-movies">
-                  <a className={`nav-link ${activeLink('top-rated-movies')}`}>
+                <Link href="/movie/top-rated">
+                  <a className={`nav-link ${activeLink('/movie/top-rated')}`}>
                     top rated
                  </a>
                 </Link>
@@ -122,7 +121,7 @@ const Header: FC<IProps> = ({ store }) => {
                   <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Hoşgeldiniz</a>
                     <div className="dropdown-menu">
-                      <Link route="favorite-movies">
+                      <Link href="/favorites-list">
                         <a className="dropdown-item">
                           Favori Listem
                        </a>
@@ -136,14 +135,14 @@ const Header: FC<IProps> = ({ store }) => {
                 :
                 <ul className="navbar-nav navbar authentication">
                   <li className="nav-item">
-                    <Link route="login">
+                    <Link href="login">
                       <a className="nav-link">
                         login
                       </a>
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link route="signup">
+                    <Link href="signup">
                       <a className="nav-link btn btn-link btn-signup" >
                         sign up
                       </a>

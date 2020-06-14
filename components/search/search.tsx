@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
 import './search.scss';
-import { Router } from '../../routes';
+import { useRouter } from 'next/router';
 
 const Search = () => {
   const [searchKey, setSearchKey] = useState<'movie' | 'tv'>('movie'); // search through 'tv' shows.  Other choice is 'movie'
   const [searchValue, setSearchValue] = useState<string>('');
+  const Router = useRouter();
   const handleSelectChange = (event: any) => {
     setSearchKey(event.target.value);
-  }
+  };
 
   const handleInputChange = (event: any) => {
     const target = event.target;
     const value = target.value;
     setSearchValue(value);
-  }
+  };
   const handleSubmit = (event: any) => {
     event.preventDefault();
     if (searchKey === 'movie') {
-      Router.pushRoute(`/search?type=movie&query=${searchValue}`);
+      Router.push(`/search-result?type=movie&query=${searchValue}`);
     }
     else {
-      Router.pushRoute(`/search?type=tv&query=${searchValue}`);
+      Router.push(`/search-result?type=tv&query=${searchValue}`);
     }
   };
   return (

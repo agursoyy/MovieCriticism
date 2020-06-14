@@ -3,7 +3,7 @@ import './movie.scss';
 import getConfig from 'next/config';
 import Store from '../../stores';
 import { inject, observer } from 'mobx-react';
-import { Link } from '../../routes';
+import Link from 'next/link';
 
 const { publicRuntimeConfig: {
   image_url
@@ -55,8 +55,7 @@ const Movie: FC<IProps> = (props) => {
     <div className={`movie-item ${border && 'movie-item-border'}`}>
       {
         poster_path ?
-          //<img src={`${image_url}/w300/${poster_path}`} className="movie-item-img" />
-          <img src={'/images/not-found_img.png'} className="movie-item-img" />
+          <img src={`${image_url}/w300/${poster_path}`} className="movie-item-img" />
           :
           <img src={'/images/not-found_img.png'} className="movie-item-img" />
       }
@@ -67,7 +66,7 @@ const Movie: FC<IProps> = (props) => {
           }
         </div>
         <h6>
-          <Link route={type === 'MOVIE' ? 'movie-detail' : 'tv-detail'} params={{ title: title ? replace(title) : replace(name), id }}>
+          <Link href={type === 'MOVIE' ? '/movie/detail' : '/tv/detail'} as={type === 'MOVIE' ? `/movie/detail/${id}` : `/movie/detail/${id}`}>
             <a className="m-title">
               {title && title}
               {name && name}

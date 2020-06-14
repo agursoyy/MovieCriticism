@@ -1,7 +1,6 @@
 import React from 'react';
 import { NextPage, NextPageContext } from 'next';
 import IPageConfig from '../interfaces/PageConfig';
-import routes, { Link } from '../routes';
 import { inject, observer } from 'mobx-react';
 import Store from '../stores';
 import Introduction from '../components/introduction';
@@ -28,13 +27,6 @@ const Home: INextPage<Props> = (props) => {
     <div id="main">
       <Introduction />
       <Content />
-      <h3 className="text-white">
-        <Link route="popular-movies">
-          <a>
-            Popular Movies List
-          </a>
-        </Link>
-      </h3>
     </div >
   );
 };

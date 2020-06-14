@@ -2,11 +2,10 @@ import { Provider } from 'mobx-react';
 import App, { AppInitialProps, Container } from 'next/app';
 import getConfig from 'next/config';
 import Head from 'next/head';
-import { Router } from '../routes';
+import Router, { useRouter } from 'next/router';
 import nookies from 'nookies';
 import React, { Fragment, useEffect } from 'react';
 import NProgress from 'nprogress';
-import { getURL } from '../routes';  // to get the url of the given route name.
 import Store from '../stores';
 
 
@@ -64,7 +63,7 @@ export default class MyApp extends App<IProps> {
           const { res } = ctx;
           if (res && typeof res.writeHead === 'function') {
             res.writeHead(302, {
-              location: getURL('login'),
+              location: '/login',
             });
             res.end();
             return { storeData, pageConfig, pageProps };
@@ -74,9 +73,9 @@ export default class MyApp extends App<IProps> {
       else {  // already logged in.
         const { res, pathname } = ctx;
         if (res && typeof res.writeHead === 'function') {
-          if (pathname === getURL('login')) {
+          if (pathname === '/login') {
             res.writeHead(302, {
-              location: getURL('home'),
+              location: '/',
             });
             res.end();
           }

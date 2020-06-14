@@ -1,8 +1,8 @@
 import React, { FC, useState, useEffect } from 'react';
 import './movieList.scss';
 import Store from '../../stores';
-import { useRouter } from 'next/router';
-import { Router, Link } from '../../routes';
+import Router, { useRouter } from 'next/router';
+import Link from 'next/link';
 const queryString = require('query-string');
 import { MovieResult } from '../../interfaces/movieResult';
 import Search from '../search';
@@ -31,11 +31,10 @@ const MovieList: FC<IProps> = ({ movies, pageTitle }) => {
 
   const router = useRouter();
   const handlePageChange = (pageNumber: Number): void => {
-    const { asPath, query } = router;
-    const current = router.asPath.split('?')[0];
+    const { pathname, query } = router;
     query.page = pageNumber.toString();
     const stringfiedParam = queryString.stringify(query, {});
-    Router.pushRoute(`${current}?${stringfiedParam}`);
+    router.push(`${pathname}?${stringfiedParam}`)
     var scroll = Scroll.animateScroll;
     scroll.scrollToTop();
   };
@@ -49,7 +48,7 @@ const MovieList: FC<IProps> = ({ movies, pageTitle }) => {
             <Search />
             <h1 className="title">{pageTitle} - List</h1>
             <div className="link">
-              <Link to="home"><a>Home</a></Link>
+              <Link href="/"><a>Home</a></Link>
               <i className="icon icon-rightarrow"></i>
               <span>movie listing</span>
             </div>

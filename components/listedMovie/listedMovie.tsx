@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import './listedMovie.scss';
 import getConfig from 'next/config';
-import { Link } from '../../routes';
+import Link from 'next/link';
 import Movie from '../movie';
 
 const { publicRuntimeConfig: {
@@ -37,7 +37,7 @@ const ListedMovie: FC<IProps> = ({ movie, type, listType }) => {
           <div className="col-sm-7">
             <div className=" movie-list-item__info">
               <h2 className="movie-list-item__info__movie-title">
-                <Link route={type === 'MOVIE' ? 'movie-detail' : 'tv-detail'} params={{ title: title ? replace(title) : replace(name), id: id ? id : 1 }}>
+                <Link href={type === 'MOVIE' ? '/movie/detail' : '/tv/detail'} as={type === 'MOVIE' ? `/movie/detail/${id}` : `/movie/detail/${id}`}>
                   <a>
                     {title}<span className="release_date">({release_date})</span>
                   </a>
@@ -54,8 +54,8 @@ const ListedMovie: FC<IProps> = ({ movie, type, listType }) => {
             </div>
           </div>
 
-        </div>
-      </div>
+        </div >
+      </div >
     );
   else
     return (
