@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "src": "/about",
+      "dest": "https://about.me"
+    },
+    {
+      "src": "/action",
+      "dest": "my-serverless-function-action/index"
+    }
+  ]
+}
