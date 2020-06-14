@@ -1,0 +1,14 @@
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: #000000;
+  text-align: center;
+  background-color: #fff;
+  border-radius: .25rem;
+  font-size: 1.4rem;
+}
+.tooltip .arrow::before {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+

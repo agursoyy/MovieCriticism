@@ -1,0 +1,25 @@
+@import '../../styles/variables/colors';
+
+.tooltip-container {
+  padding: .6rem 1rem;
+  position: absolute !important;
+  will-change: transform !important;
+  top: 4rem !important; 
+  left: -18.5rem !important; 
+  .tooltip-arrow {
+    height: 1rem;
+    position: absolute;
+    left: 50%;
+    top: -8px !important;
+    width: 1rem;
+  }
+  .tooltip-arrow[data-placement*='right'] {
+    height: 1rem;
+    margin-left: -0.7rem;
+    width: 1rem;
+    transform: rotate(90deg);
+  }
+  .tooltip-body {
+    font-size: 1.6rem;
+  }
+}

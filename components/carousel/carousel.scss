@@ -1,0 +1,62 @@
+@import '../../styles/variables/colors';
+@import '../../styles/mixins/index.scss';
+
+
+.carousel-t {
+  padding-bottom: 6.2rem;
+  .slick-slider {
+    position: relative;
+    .slick-prev {
+      z-index: 1000;
+    }
+    .slick-next {
+    }
+    .slick-list {
+      .slick-item-wrapper {
+        padding: 1rem 2rem;
+        @include respond-above(sm) {
+          padding: 1rem;
+        }
+        &:focus {
+          outline: none !important;
+        }
+      }
+    }
+    
+    ul.slick-dots {
+      bottom: -28px;
+      padding-right: 0;
+      text-align: center;
+      @include respond-above(sm) {
+        bottom: -30px;
+        text-align: end;
+        padding-right: .8rem;
+      }
+      li {
+        margin: 0 !important;
+     
+        border-radius: 50%;
+        button {
+          &::before {
+            color: rgb(170, 169, 169);
+            font-size: 1.2rem;
+            opacity: 0.5;
+          }
+        }
+        &.slick-active {
+          button {
+            &::before {
+              color: red;
+              font-size: 1.3rem;
+              opacity: 1;
+              color: $candlelight; 
+            }
+          }
+       
+      }
+      }
+    }
+  }
+
+}
+

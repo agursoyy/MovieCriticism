@@ -1,0 +1,57 @@
+@import '../../styles/variables/colors';
+@import '../../styles/mixins/index.scss';
+
+
+.movie-tab {
+  margin-bottom: 6rem;
+  padding: 0 16px;
+  @include respond-above(sm) {
+    padding: 0 0;
+  }
+  .th-title {
+    margin-bottom: 24px;
+    h2 {
+      color: #fff;
+      font-weight: bold;
+      font-family: 'Dosis', sans-serif;
+      text-transform: uppercase;
+      font-size: 2.4rem;
+    }
+    a {
+      color: #abb7c4;
+      font-weight: bold;
+      font-family: 'Dosis', sans-serif;
+      text-transform: uppercase;
+      font-size: 1.6rem;
+    }
+  }
+  .tab {
+    .tab-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+          text-decoration: none;
+          font-family: 'Dosis', sans-serif;
+          font-weight: bold;
+          color: #abb7c4;
+          cursor: pointer;
+          text-transform: uppercase;
+          margin-right: 2.2rem;
+          font-size: 1.6rem;
+         
+          &:hover {
+            color: $candlelight;
+          }
+          &.active {
+            color: $candlelight;
+          }
+
+      }
+    }
+    .tab-content {
+      margin-top: 30px;
+    }
+  }
+
+}

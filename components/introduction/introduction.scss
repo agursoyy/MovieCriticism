@@ -1,0 +1,12 @@
+@import '../../styles/mixins/index';
+
+.t-introduction {
+  position: relative;
+  @include top_element();
+  min-height: 100vh;
+  .content {
+    position: relative;
+  }
+  
+
+}

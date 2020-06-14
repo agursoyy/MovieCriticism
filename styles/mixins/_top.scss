@@ -1,0 +1,15 @@
+@mixin top_element() {
+  padding-top: 100px;  // since header's position is absolute at first.
+  @include respond-above(md) {
+    padding-top: 140px;
+  }
+  background-size: cover;
+
+    .overlay {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color: #0b0127, $alpha: 0.87);
+  }
+}

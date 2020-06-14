@@ -1,0 +1,100 @@
+@import '../../styles/variables/colors';
+@import '../../styles/mixins/index.scss';
+
+#t-header {
+  &.absolute-header {
+    position: absolute !important;
+    background-color: transparent;
+    top: 0;
+    width: 100%;
+  }
+  nav.navbar {
+    padding: 20px 24px;
+    z-index: 9999;
+    @include respond-above(md) {
+      padding: 30px 12px;
+    }
+    .navbar-brand {
+     
+    }
+    .navbar-toggler {
+      .icon-hamburger {
+        color: #fff;
+        font-size: 2rem;
+      }
+      &[aria-expanded="true"] {
+          color: red;
+          .icon-close {
+            color: $candlelight;
+          }
+      }
+      &:focus {
+        outline: none !important;
+      }
+    }
+    
+    .navbar-collapse {
+      ul.navbar-nav {
+        margin-left: 28px;
+        li.nav-item {
+          .nav-link {
+            font-family: 'Dosis', sans-serif;
+            font-size: 1.8rem;
+            color: #abb7c4;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-right: 12px;
+            &:hover, &.active {
+              color: $candlelight;
+            }
+            &.btn-signup {
+             color: #fff;
+             background-color: #dd003f;
+             padding: 11px 25px;
+             border-radius: 22px;
+            }
+          }
+        }
+        li.nav-item.dropdown {
+          .dropdown-menu.show {
+           background-color: inherit;
+           border: none;
+           .dropdown-item {
+            font-family: 'Dosis', sans-serif;
+            font-size: 1.6rem;
+            color: #abb7c4;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: start !important;
+            &:hover {
+              background-color: inherit;
+              color: $candlelight;
+            }
+           }
+          }
+        }
+      }
+    }
+  }
+  .sticky-nav {
+    background-color: $secondary !important;
+    padding-top: 2.4px !important;
+    padding-bottom: 2.4px !important;
+     animation: mymove 0.7s ease-in-out;
+     .dropdown-menu.show {
+       @include respond-above(lg) {
+        padding-top: 2rem;
+        background-color: $secondary !important;
+       }
+     }
+     
+      @keyframes mymove {
+        from {
+          top: -80px;
+        }
+        to {
+          top: 0;
+        }
+      }
+  }
+}

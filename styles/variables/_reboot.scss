@@ -1,0 +1,27 @@
+@import '../mixins/breakpoint';
+
+html {
+  font-size: 62.5%;
+ 
+  body {
+    font-size: .84rem;
+    @include respond-above(sm) {
+      font-size: .9rem;
+    }
+    @include respond-above(md) {
+      font-size: 1.6rem;
+    }
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $body-color !important;
+    padding: 0 !important;
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  }
+  
+
+}

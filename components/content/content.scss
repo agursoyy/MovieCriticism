@@ -1,0 +1,14 @@
+@import '../../styles/variables/colors';
+@import '../../styles/mixins/index.scss';
+
+.movie-tabs-content {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: $primary;
+}
+
+.container {
+  & &__header {
+    color: red;
+  }
+}

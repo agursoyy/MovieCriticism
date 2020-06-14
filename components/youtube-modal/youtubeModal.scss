@@ -1,0 +1,81 @@
+@import '../../styles/mixins';
+
+
+.youtube-modal-container {
+  position: fixed;
+  z-index: 999999999;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,.8);
+  .icon {
+    position: absolute;
+    top: 3.2rem;
+    right: 2rem;
+    color: #fff;
+    font-size: 2.4rem;
+    @include respond-above(md) {
+      top: 4rem;
+      right: 3.6rem;
+    }
+   
+  }
+  div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .youtube-trailer-video {
+      width: 92%;
+      height: 36%;
+      @include respond-above(sm) {
+        width: 80%;
+        height: 40%;
+      }
+      @include respond-above(md) {
+        width: 80%;
+        height: 46%;
+      }
+      @include respond-above(lg) {
+        width: 52%;
+        height: 56%;
+      }
+    }
+  }
+}
+.modal-video {
+  .modal-video-inner {
+    position: fixed;
+    z-index: 10000;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+    .modal-video-movie-wrap{
+      padding: 0 !important;
+      height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      iframe {
+        width: 90%;
+        height: 40%;
+        @include respond-above(sm) {
+          height: 50%;
+          width: 80%;
+        }
+        @include respond-above(md) {
+          height: 60%;
+        }
+        @include respond-above(lg) {
+          width: 64%;
+          height: 70%;
+        }
+      }
+      .modal-video-close-btn {
+        display: none;
+      }
+    }
+  }
+}

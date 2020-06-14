@@ -1,0 +1,41 @@
+$data: (
+  "icons": (
+    "close": "\ea01",
+    "downarrow": "\ea02",
+    "facebook": "\ea03",
+    "google": "\ea04",
+    "grid-icon": "\ea05",
+    "hamburger": "\ea06",
+    "heart": "\ea07",
+    "leftarrow": "\ea08",
+    "list-icon": "\ea09",
+    "logo": "\ea0a",
+    "next": "\ea0b",
+    "play": "\ea0c",
+    "refresh": "\ea0d",
+    "rightarrow": "\ea0e",
+    "search": "\ea0f",
+    "share": "\ea10",
+    "star": "\ea11",
+    "twitter": "\ea12",
+    "youtube": "\ea13"
+  )
+);
+
+@include font-face(icons);
+
+.icon {
+  font-family: icons;
+  font-style: normal;
+
+  @each $icon, $content in map-get($data, icons) {
+
+    &-#{$icon} {
+      
+      // stylelint-disable-next-line max-nesting-depth
+      &::before {
+        content: $content;
+      }
+    }
+  }
+}

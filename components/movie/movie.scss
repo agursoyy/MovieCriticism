@@ -1,0 +1,59 @@
+@import '../../styles/mixins/index';
+@import '../../styles/variables/colors';
+.movie-item-border {
+  -webkit-box-shadow: .08rem .03rem rgb(126, 125, 125);
+  box-shadow: 0 0 .08rem .03rem rgb(133, 131, 131);
+}
+.movie-item {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  &:hover {
+    box-shadow: 0 1px 2px 0 rgba(40, 7, 100, 0.302), 0 2px 6px 2px rgba(144, 118, 216, 0.149);
+  }
+  img.movie-item-img {
+    width: inherit
+  }
+
+  .movie-item-info {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-left: 30px;
+    padding-bottom: 20px !important;
+    background: linear-gradient(180deg,hsla(0,0%,100%,0) 0,#000);
+    .genres {
+      margin-bottom: 16px;
+      span.badge {
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 0.4em 0.6em !important;
+      }
+    }
+    .m-title {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-family: 'Dosis', sans-serif;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 1.8rem;
+    }
+    .vote-rate-icon {
+      color: #abb7c4;
+      font-size: 1.2rem;
+      font-weight: 600;
+      i.icon-star {
+        color: #f5b50a;
+        font-size: 2rem;
+      }
+      span {
+        font-size: 2rem;
+        color: #fff;
+      }
+    }
+  }
+}

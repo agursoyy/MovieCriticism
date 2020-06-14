@@ -1,0 +1,232 @@
+@import '../../styles/mixins/index';
+@import '../../styles/variables/index';
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
+$gray_font_color: #abb7c4;
+
+.detail-container {
+  .backdrop {
+    position: relative;
+    @include top_element();
+    height: 598px;
+    background-position: center center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.75);
+
+    }
+    .search-box {
+      position: relative;
+      z-index: 99;
+    }
+  }
+
+  .movie-container {
+    position: relative;
+    margin-top: -450px;
+    @include respond_above(md) {
+      margin-top: -300px;
+    }
+    .movie-img {
+      padding: 0 1.45rem;
+      margin-bottom: 5.2rem;
+      @include respond_above(md) {
+        padding: 0 1rem;
+        margin-right: 30px;
+        position: sticky;
+        top: 11rem;
+      }
+      img.poster-img {
+        width: 100%;
+        border-radius: .3rem;
+      }
+      .movie-btn {
+        margin-top: 20px;
+        .btn {
+          font-family: 'Dosis', sans-serif;
+          font-size: 1.6rem;
+          text-transform: uppercase;
+          padding: 14px;
+          border-radius: 0;
+        }
+      }
+    }
+    .movie-single {
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.3);
+      @include respond_above(sm) {
+        background:transparent;
+      
+      }
+      .title {
+        color: #fff;
+        font-family: 'Dosis', sans-serif;
+        margin-bottom: 30px;
+        span {
+          margin-left: 10px;
+          font-size: 2.3rem;
+          color: #4f5b68;
+          font-weight: 300;
+        }
+      }
+      ul.buttons {
+        margin-bottom: 20px;
+        @include respond_above(md) {
+          margin-bottom: 74px;
+        }
+    
+        li {
+          margin-bottom: .8rem;
+          margin-right: 1.2rem;
+          .btn-link {
+            font-size: 1.6rem;
+            font-weight: 800;
+            font-family: 'Dosis', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.06rem;
+            color: $white;
+            display: flex;
+            align-items: center;
+            i.icon {
+              display: inline-block;
+              padding: 10px 14px;
+              border-radius: 50%;
+              color: inherit;
+              border: 2px solid $white;
+              margin-right: 14px;
+              transition: background-position .01s cubic-bezier(.47, .1, 1, .63), color .01s linear;
+              transition-delay: 0.025s, 0.025s;
+            } 
+             &.favorited, &.refresh {
+              i.icon {
+                background-color: $white;
+                color: $black;
+              }
+            } 
+            i.icon-refresh {
+              @-webkit-keyframes rotating {
+                from{
+                    -webkit-transform: rotate(0deg);
+                }
+                to{
+                    -webkit-transform: rotate(360deg);
+                }
+              }
+              
+                -webkit-animation: rotating 2s linear infinite;
+            }
+
+          }
+          .rate {
+            color: $gray_font_color;
+            font-size: 1.6rem;
+            font-weight: 300;
+            i.icon-star {
+              color: #f5b50a;
+              font-size: 3rem;
+              margin-right: 10px;
+            }
+            span.bold {
+              color: $white;
+              font-size: 2.4rem;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+ 
+      .movie-tabs {
+        ul.tab-links {
+          margin-bottom: 10px;
+          @include respond_above(md) {
+            margin-bottom: 50px;
+          }
+          li {
+            position: relative;
+            padding: 0.8rem 1.5rem;
+            border-bottom: .01rem solid rgb(77, 76, 76);
+            @include respond_above(sm) {
+              padding: 1.4rem 2rem;
+            }
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: 'Dosis', sans-serif;
+            font-size: 1.8rem;
+            color: $gray_font_color;
+            transition: border-width .6s linear;
+            text-decoration: none;
+            &:hover {
+              text-decoration: none;
+              color: #dcf836;
+            } 
+            &.active {
+              color: #dcf836;
+              position: relative;
+              &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0.05rem;
+                border-top: 0.25rem solid #dcf836;
+                border-radius: 0.25rem 0.25rem 0 0;
+              } 
+              
+            }
+          }
+        }
+        .tab-content {
+          padding-top: 1.6rem;
+          @include respond_above(md) {
+            padding-top: 4rem;
+          }
+          .overview {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.6rem;
+            color: $gray_font_color;
+            font-weight: 300;
+            text-transform: none;
+            line-height: 2.4rem !important;
+          }
+          .media {
+            padding: 1rem 1.6rem;
+            @include respond_above(sm) {
+              padding: 0;
+            }
+            .row .media-column {
+              margin-bottom: 3rem;
+              .img__container {
+                position: relative;
+                width: 100%;
+                cursor: pointer;
+                border-radius: 5px;
+                overflow: hidden;
+                img {
+                  width: inherit;
+                }
+                &::after {
+                  content: '';
+                  position: absolute;
+                  top: 0; left:0; right: 0; bottom: 0;
+                  background-color: rgba(0, 0, 0, 0.2);
+                  z-index: 1;
+                }
+                &:hover::after{
+                  background-color: rgba(0, 0, 0, 0);
+                }
+
+              }
+
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
