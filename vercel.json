@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "src": "/deneme",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/movie/detail/*",
+      "dest": "/movie/detail/[id].html"
+    }
+  ]
+}
