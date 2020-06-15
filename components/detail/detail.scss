@@ -58,11 +58,6 @@ $gray_font_color: #abb7c4;
     }
     .movie-single {
       z-index: 1;
-      background-color: rgba(0, 0, 0, 0.3);
-      @include respond_above(sm) {
-        background:transparent;
-      
-      }
       .title {
         color: #fff;
         font-family: 'Dosis', sans-serif;
