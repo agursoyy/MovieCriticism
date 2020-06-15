@@ -1,7 +1,6 @@
 @import '../../styles/mixins';
 
 .youtube-modal-container {
-  border: 1px solid red;
   position: relative;
   .icon-btn {
     position: absolute;
@@ -10,8 +9,8 @@
     z-index: 1000;
     .icon-close {
       color: rgb(201, 200, 200);
-      font-size: 1.6rem;
-      font-weight: 600;   
+      font-size: 1.2rem;
+      font-weight: 500;   
       z-index: 1000;
       &:hover {
         color: #fff;
