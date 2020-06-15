@@ -26,7 +26,7 @@ const Carousel: FC<IProps> = (props) => {
     arrows: false,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 992,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -35,7 +35,7 @@ const Carousel: FC<IProps> = (props) => {
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -43,7 +43,7 @@ const Carousel: FC<IProps> = (props) => {
         }
       },
       {
-        breakpoint: 480,
+        breakpoint: 576,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1

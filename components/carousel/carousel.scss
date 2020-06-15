@@ -12,11 +12,17 @@
     .slick-next {
     }
     .slick-list {
-      .slick-item-wrapper {
-        padding: 1rem 2rem;
+      .slick-slide {
+        padding-right: 1.5rem;
         @include respond-above(sm) {
-          padding: 1rem;
-        }
+          padding: 0;
+          &:not(:last-child) {
+          padding-right: 1.5rem;            
+          }
+        }  
+
+      }
+      .slick-item-wrapper {
         &:focus {
           outline: none !important;
         }
@@ -26,7 +32,7 @@
     ul.slick-dots {
       bottom: -28px;
       padding-right: 0;
-      text-align: center;
+      text-align: start;
       @include respond-above(sm) {
         bottom: -30px;
         text-align: end;
