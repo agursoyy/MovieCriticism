@@ -1,5 +1,5 @@
 @mixin top_element() {
-  padding-top: 100px;  // since header's position is absolute at first.
+  padding-top: 62px;  // since header's position is absolute at first.
   @include respond-above(md) {
     padding-top: 140px;
   }

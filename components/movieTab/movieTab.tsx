@@ -51,7 +51,7 @@ const MovieTab: FC<IProps> = (props) => {
 
       </div>
       <div className="tab">
-        <ul className="tab-links d-flex flex-row">
+        <ul className="tab-links">
           <li onClick={() => { toggle('popular'); }} className={show.popular ? 'active' : ''}>
             #popular
           </li>

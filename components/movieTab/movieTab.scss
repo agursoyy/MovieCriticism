@@ -3,7 +3,7 @@
 
 
 .movie-tab {
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
   padding: 0 16px;
   @include respond-above(sm) {
     padding: 0 0;
@@ -27,9 +27,11 @@
   }
   .tab {
     .tab-links {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+      display: flex;
+      flex-direction: column;
+      @include respond-above(md) {
+        flex-direction: row;
+      }
       li {
           text-decoration: none;
           font-family: 'Dosis', sans-serif;
@@ -37,20 +39,25 @@
           color: #abb7c4;
           cursor: pointer;
           text-transform: uppercase;
-          margin-right: 2.2rem;
-          font-size: 1.6rem;
-         
+          margin-bottom: 1.5rem;
+          font-size: 1.6rem;         
           &:hover {
             color: $candlelight;
           }
           &.active {
             color: $candlelight;
           }
-
+          @include respond-above(md) {
+            margin-bottom: 0;
+            margin-right: 2.2rem;
+          }
       }
     }
     .tab-content {
-      margin-top: 30px;
+      margin-top: 1.4rem;
+      @include respond-above(md) {
+        margin-top: 3rem;
+      }
     }
   }
 
