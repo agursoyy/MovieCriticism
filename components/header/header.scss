@@ -65,10 +65,14 @@
             color: #abb7c4;
             font-weight: bold;
             text-transform: uppercase;
-            text-align: start !important;
+            padding-left: 0;
+            padding-right: 0;
             &:hover {
               background-color: inherit;
               color: $candlelight;
+            }
+            @include respond-above(md) {
+              padding: .3rem 1.4rem;
             }
            }
           }

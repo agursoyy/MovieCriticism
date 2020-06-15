@@ -58,6 +58,20 @@
       @include respond-above(md) {
         margin-top: 3rem;
       }
+      .slick-slider {  /* overriding the css classes of carousel slider's.*/
+        .slick-list {
+          .slick-slide {
+            @media screen and (max-width: 572px){
+              padding: 0 2rem 0 0;
+            }
+          }
+        }
+        ul.slick-dots {
+          @media screen and (max-width: 572px){
+            text-align: start;
+          }
+        }
+      }
     }
   }
 

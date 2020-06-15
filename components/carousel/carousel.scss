@@ -13,11 +13,11 @@
     }
     .slick-list {
       .slick-slide {
-        padding-right: 1.5rem;
+        padding: 1.7rem;
         @include respond-above(sm) {
           padding: 0;
           &:not(:last-child) {
-          padding-right: 1.5rem;            
+          padding-right: 1.7rem;            
           }
         }  
 
@@ -30,13 +30,11 @@
     }
     
     ul.slick-dots {
-      bottom: -28px;
-      padding-right: 0;
-      text-align: start;
+      bottom: -30px;
+      padding-right: .8rem;
+      text-align: center;
       @include respond-above(sm) {
-        bottom: -30px;
         text-align: end;
-        padding-right: .8rem;
       }
       li {
         margin: 0 !important;
