@@ -30,11 +30,12 @@
     }
     
     ul.slick-dots {
-      bottom: -30px;
+      bottom: -26px;
       padding-right: .8rem;
       text-align: center;
       @include respond-above(sm) {
         text-align: end;
+        bottom: -30px;
       }
       li {
         margin: 0 !important;

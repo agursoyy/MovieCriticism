@@ -62,7 +62,8 @@
         .slick-list {
           .slick-slide {
             @media screen and (max-width: 572px){
-              padding: 0 2rem 0 0;
+              padding-left: 0;
+              padding-right: 2rem;
             }
           }
         }
