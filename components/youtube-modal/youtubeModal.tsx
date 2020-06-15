@@ -1,6 +1,5 @@
 import React, { FC, useEffect } from 'react';
 import YouTube from 'react-youtube';
-import './youtubeModal.scss';
 
 interface IProps {
   close(): void;
@@ -12,21 +11,21 @@ const youtubeModal: FC<IProps> = ({ videoId, close }) => {
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = 'unset' };
-  })
+    return () => { document.body.style.overflow = 'unset'; };
+  });
   const _onReady = (event: any) => {
     // access to player in all event handlers via event.target
     event.target.pauseVideo();
-  }
+  };
 
   return (
     <div className="youtube-modal-container">
-      <a className="btn btn-link" onClick={() => { close(); }}>
-        <i className="icon icon-close"></i>
+      <a className="btn btn-link icon-btn">
+        <i className="icon icon-close" onClick={() => { close(); }}></i>
       </a>
       <YouTube videoId={videoId} className="youtube-trailer-video" opts={{ playerVars: { autoplay: 1 } }} onReady={_onReady} />
     </div>
-  )
+  );
 };
 
 export default youtubeModal;

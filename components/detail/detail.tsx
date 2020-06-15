@@ -3,6 +3,7 @@ import getConfig from 'next/config';
 import './detail.scss';
 import Store from '../../stores';
 import Search from '../search';
+import ReactModal from 'react-modal';
 import YoutubeModal from '../youtube-modal';
 import { inject, observer } from 'mobx-react';
 
@@ -125,9 +126,15 @@ const Detail: FC<IProps> = (props) => {
 
   return (
     <>
-      {
-        openYoutubeModal && <YoutubeModal videoId={youtube_video_id} close={closeModal} />
-      }
+      <ReactModal
+        isOpen={openYoutubeModal}
+        contentLabel="Minimal Modal Example"
+        className="modal-container"
+        ariaHideApp={false}
+        onRequestClose={() => { setOpenYoutubeModal(false); }}
+      >
+        <YoutubeModal videoId={youtube_video_id} close={closeModal} />
+      </ReactModal>
       <div className="detail-container">
         <div className="backdrop" style={{ background: backdrop_path && `url(${image_url}/original/${backdrop_path})` }}>
           <div className="container search-box">
