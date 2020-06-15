@@ -13,11 +13,11 @@
     }
     .slick-list {
       .slick-slide {
-        padding: 1.7rem;
+        padding: 0 1.6rem;  // default padding on mobile screen.
         @include respond-above(sm) {
           padding: 0;
           &:not(:last-child) {
-          padding-right: 1.7rem;            
+          padding-right: 1.6rem;
           }
         }  
 
@@ -30,12 +30,11 @@
     }
     
     ul.slick-dots {
-      bottom: -26px;
       padding-right: .8rem;
       text-align: center;
+      bottom: -40px;
       @include respond-above(sm) {
         text-align: end;
-        bottom: -30px;
       }
       li {
         margin: 0 !important;
