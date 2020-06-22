@@ -1,5 +1,5 @@
 import { NextPage, NextPageContext } from 'next';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import Store from '../stores';
 import Error from 'next/error';
@@ -17,7 +17,6 @@ type Props = {
 type INextPage<P> = NextPage<P> & {
   pageConfig?: IPageConfig //whatever type it actually is ===> any. olmalı
 }
-
 
 const NowplayingMovies: INextPage<Props> = (props) => {
   const { store, type } = props;
@@ -48,9 +47,11 @@ NowplayingMovies.getInitialProps = async ({ store, query }: INextPageContext): P
   else if (type === 'tv')
     typeParam = 'tv';
 
-  let queryWord = query.query ? query.query.toString() : '';
+  if (typeParam && query.query) {
+    let queryWord = query.query.toString();
+    await Promise.all([store.movie.fetchSearchResult(typeParam, queryWord, pageParam), store.movie.fetchGenres()]);
+  }
 
-  await Promise.all([store.movie.fetchSearchResult(typeParam, queryWord, pageParam), store.movie.fetchGenres()]);
   return { type: typeParam };
 };
 

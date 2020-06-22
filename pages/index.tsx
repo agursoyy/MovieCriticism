@@ -21,8 +21,6 @@ type INextPage<P> = NextPage<P> & {
 
 const Home: INextPage<Props> = (props) => {
   const { store } = props;
-  const current = store?.user.getCurrent();
-  console.log(current);
   return (
     <div id="main">
       <Introduction />

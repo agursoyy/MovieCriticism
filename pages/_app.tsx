@@ -47,10 +47,11 @@ export default class MyApp extends App<IProps> {
     let storeData = null;
     if (req) {
       const { accessToken } = nookies.get(ctx);
+      let user;
       if (accessToken) {
         store.api.accessToken = accessToken;
+        user = await store.user.getCurrent();   // user which is successfully set means the user has logged in.
       }
-      const user = await store.user.getCurrent();   // user which is successfully set means the user has logged in.
       if (!user) {  // user not found so kick him off.
         /*store.api.accessToken = undefined;
         store.api.refreshToken = undefined;
