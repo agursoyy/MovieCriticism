@@ -56,7 +56,7 @@ export default class MyApp extends App<IProps> {
         /*store.api.accessToken = undefined;
         store.api.refreshToken = undefined;
         nookies.destroy(ctx, 'accessToken', false);
-        nookies.destroy(ctx, 'refreshToken', false); */
+        nookies.destroy(ctx, 'refreshToken', false);*/
         store.auth.logout();
 
         const { auth } = pageConfig;
