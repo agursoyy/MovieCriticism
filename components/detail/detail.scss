@@ -95,29 +95,22 @@ $gray_font_color: #abb7c4;
               border-radius: 50%;
               color: inherit;
               border: 2px solid $white;
-              margin-right: 14px;
               transition: background-position .01s cubic-bezier(.47, .1, 1, .63), color .01s linear;
               transition-delay: 0.025s, 0.025s;
             } 
-             &.favorited, &.refresh {
+            &.favorited{
               i.icon {
                 background-color: $white;
                 color: $black;
               }
             } 
-            i.icon-refresh {
-              @-webkit-keyframes rotating {
-                from{
-                    -webkit-transform: rotate(0deg);
-                }
-                to{
-                    -webkit-transform: rotate(360deg);
-                }
+            .btn-expl {
+              display: none;
+              @include respond_above(sm) {
+                display: inline;
+                margin-left: 10px;
               }
-              
-                -webkit-animation: rotating 2s linear infinite;
             }
-
           }
           .rate {
             color: $gray_font_color;

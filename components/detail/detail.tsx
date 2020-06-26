@@ -73,36 +73,31 @@ const Detail: FC<IProps> = (props) => {
 
 
   const addToFavorites = async () => {
-    setFavoriteLoading(true);
+    setIsFavoriteState(true);
     let isAdded = await addMovieToFavorites(props.movie);
-    if (isAdded)
-      setIsFavoriteState(true);
-    setFavoriteLoading(false);
+    if (!isAdded)
+      setIsFavoriteState(false);
   };
   const deleteFromFavorites = async () => {
-    setFavoriteLoading(true);
+    setIsFavoriteState(false);
     let isRemoved = await removeMovieFromFavorites(id);
-    if (isRemoved)
-      setIsFavoriteState(false);
-    setFavoriteLoading(false);
+    if (!isRemoved)
+      setIsFavoriteState(true);
   };
   const favoriteButton = (): JSX.Element => {
     let button: JSX.Element;
     if (!user) {
       button = <a className="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Login to add this movie to your favorite list">
-        <i className="icon icon-heart"></i> <span className="d-none d-sm-block">Add to Favorites</span>
+        <i className="icon icon-heart"></i> <span className="btn-expl">Add to Favorites</span>
       </a>;
     }
     else {
-      button = <a className={`btn btn-link ${isFavoriteState ? 'favorited' : ''} ${favorite_loading ? 'disabled' : ''}`}
+      button = <a className={`btn ${isFavoriteState ? 'favorited' : ''}`}
         onClick={!isFavoriteState ? addToFavorites : deleteFromFavorites}>
         {
-          favorite_loading ?
-            <i className="icon icon-refresh"></i>
-            :
-            <i className="icon icon-heart"></i>
+          <i className="icon icon-heart"></i>
         }
-        <span className="d-none d-sm-block">
+        <span className="btn-expl">
           {!isFavoriteState ? 'Add to favorites' : 'Remove from favorites'}
         </span>
       </a >;
@@ -115,7 +110,7 @@ const Detail: FC<IProps> = (props) => {
       return (
         <a className="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Login to share this movie">
           <i className="icon icon-share"></i>
-          <span className="d-none d-sm-block">Share</span>
+          <span className="btn-expl">Share</span>
         </a>
       );
     }
@@ -123,7 +118,7 @@ const Detail: FC<IProps> = (props) => {
       return (
         <a className="btn btn-link">
           <i className="icon icon-share"></i>
-          <span className="d-none d-sm-block">Share</span>
+          <span className="btn-expl">Share</span>
         </a>
       );
     }
