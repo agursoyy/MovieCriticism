@@ -92,7 +92,7 @@ const Detail: FC<IProps> = (props) => {
       </a>;
     }
     else {
-      button = <a className={`btn ${isFavoriteState ? 'favorited' : ''}`}
+      button = <a className={`btn btn-link ${isFavoriteState ? 'favorited' : ''}`}
         onClick={!isFavoriteState ? addToFavorites : deleteFromFavorites}>
         {
           <i className="icon icon-heart"></i>
