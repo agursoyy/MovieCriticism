@@ -28,12 +28,14 @@ $gray_font_color: #abb7c4;
 
   .movie-container {
     position: relative;
-    margin-top: -450px;
+    margin-top: -500px;
     @include respond_above(md) {
       margin-top: -300px;
     }
+    &-row {
+      margin: 0 auto;
+    }
     .movie-img {
-      padding: 0 1.45rem;
       margin-bottom: 5.2rem;
       @include respond_above(md) {
         padding: 0 1rem;

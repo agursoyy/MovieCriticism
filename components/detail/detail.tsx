@@ -29,6 +29,10 @@ type IShow = {
 
 const Detail: FC<IProps> = (props) => {
 
+  const { movie: { id, backdrop_path, poster_path, title, youtube_video_id, release_date, vote_average, overview }, isFavorite } = props;
+  const { store } = props;
+  const { user: { user, favoriteIDs, addMovieToFavorites, removeMovieFromFavorites }, movie: { related_images, fetchRelatedImages } } = store!;
+
   useEffect(() => {
     $(function () {
       ($('[data-toggle="tooltip"]') as any).tooltip();
@@ -42,11 +46,8 @@ const Detail: FC<IProps> = (props) => {
   const [openYoutubeModal, setOpenYoutubeModal] = useState(false); // for the youtube video modal.
   const [favorite_loading, setFavoriteLoading] = useState(false);
   const [imagesLoading, setImagesLoading] = useState(true);
+  const [isFavoriteState, setIsFavoriteState] = useState(isFavorite);
 
-
-  const { movie: { id, backdrop_path, poster_path, title, youtube_video_id, release_date, vote_average, overview }, isFavorite } = props;
-  const { store } = props;
-  const { user: { user, favoriteIDs, addMovieToFavorites, removeMovieFromFavorites }, movie: { related_images, fetchRelatedImages } } = store!;
 
   const toggle = (target_name: 'overview' | 'media') => { // toggle between movie tabs
     const newShowState: IShow = {};
@@ -73,12 +74,16 @@ const Detail: FC<IProps> = (props) => {
 
   const addToFavorites = async () => {
     setFavoriteLoading(true);
-    await addMovieToFavorites(props.movie);
+    let isAdded = await addMovieToFavorites(props.movie);
+    if (isAdded)
+      setIsFavoriteState(true);
     setFavoriteLoading(false);
   };
   const deleteFromFavorites = async () => {
     setFavoriteLoading(true);
-    await removeMovieFromFavorites(id);
+    let isRemoved = await removeMovieFromFavorites(id);
+    if (isRemoved)
+      setIsFavoriteState(false);
     setFavoriteLoading(false);
   };
   const favoriteButton = (): JSX.Element => {
@@ -89,8 +94,8 @@ const Detail: FC<IProps> = (props) => {
       </a>;
     }
     else {
-      button = <a className={`btn btn-link ${isFavorite ? 'favorited' : ''} ${favorite_loading ? 'disabled' : ''}`}
-        onClick={!isFavorite ? addToFavorites : deleteFromFavorites}>
+      button = <a className={`btn btn-link ${isFavoriteState ? 'favorited' : ''} ${favorite_loading ? 'disabled' : ''}`}
+        onClick={!isFavoriteState ? addToFavorites : deleteFromFavorites}>
         {
           favorite_loading ?
             <i className="icon icon-refresh"></i>
@@ -98,7 +103,7 @@ const Detail: FC<IProps> = (props) => {
             <i className="icon icon-heart"></i>
         }
         <span className="d-none d-sm-block">
-          {!isFavorite ? 'Add to favorites' : 'Remove from favorites'}
+          {!isFavoriteState ? 'Add to favorites' : 'Remove from favorites'}
         </span>
       </a >;
     }
@@ -144,7 +149,7 @@ const Detail: FC<IProps> = (props) => {
 
         <div className="movie-container">
           <div className="container">
-            <div className="row">
+            <div className="row movie-container-row">
               <div className="col-md-4">
                 <div className="movie-img">
                   {
