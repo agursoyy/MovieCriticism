@@ -58,7 +58,6 @@ export default class MyApp extends App<IProps> {
         nookies.destroy(ctx, 'accessToken', false);
         nookies.destroy(ctx, 'refreshToken', false);*/
         store.auth.logout();
-
         const { auth } = pageConfig;
         if (auth) {
           const { res } = ctx;

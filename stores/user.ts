@@ -70,7 +70,7 @@ export default class User {
 
 
   @action
-  addMovieToFavorites = async (movie: {}) => {
+  addMovieToFavorites = async (movie: {}): Promise<boolean> => {
     const form = {
       movie
     };
@@ -80,12 +80,14 @@ export default class User {
     }, 201);
     const { status } = response;
     if (!status) {
-      await this.fetchFavoriteIDs();
+      //await this.fetchFavoriteIDs();
+      return true;
     }
+    return false;
   }
 
   @action
-  removeMovieFromFavorites = async (id: number) => {
+  removeMovieFromFavorites = async (id: number): Promise<boolean> => {
     const form = {
       movieId: id
     };
@@ -95,8 +97,9 @@ export default class User {
     }, 200);
     const { status } = response;
     if (!status) {
-      await this.fetchFavoriteIDs();
+      return true; // removed successfully
     }
+    return false;
   }
 
 }
