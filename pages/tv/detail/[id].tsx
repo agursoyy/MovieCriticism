@@ -19,25 +19,25 @@ type INextPage<P> = NextPage<P> & {
 
 
 
-const MovieDetail: INextPage<Props> = ({ store }): JSX.Element => {
+const TvDetail: INextPage<Props> = ({ store }): JSX.Element => {
   const { movie, user } = store!;
   const { detailed_result } = movie;
 
   return (
     detailed_result ?
       <div>
-        <Detail type='MOVIE' movie={detailed_result} isFavorite={movie.isFavorite(detailed_result.id)} />
+        <Detail type='TV' movie={detailed_result} isFavorite={movie.isFavorite(detailed_result.id)} />
       </div>
       :
       <Error statusCode={404} title="NO MOVIE FOUND" />
   );
 };
 
-MovieDetail.getInitialProps = async (ctx: INextPageContext): Promise<Props> => {  // getInitialProps works on only pages folder, not other components.
+TvDetail.getInitialProps = async (ctx: INextPageContext): Promise<Props> => {  // getInitialProps works on only pages folder, not other components.
   const { query: { id }, store } = ctx;
   const { movie: { fetchDetail, detailed_result }, user: { user, fetchFavoriteIDs } } = store;
   if (id) {
-    await fetchDetail('movie', Number(id));
+    await fetchDetail('tv', Number(id));
   }
   if (user) {
     await fetchFavoriteIDs();
@@ -46,6 +46,6 @@ MovieDetail.getInitialProps = async (ctx: INextPageContext): Promise<Props> => {
   return {};
 };
 
-MovieDetail.pageConfig = { auth: false };
+TvDetail.pageConfig = { auth: false };
 
-export default inject('store')(observer(MovieDetail));
+export default inject('store')(observer(TvDetail));

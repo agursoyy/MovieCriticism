@@ -183,8 +183,9 @@ $gray_font_color: #abb7c4;
             text-transform: none;
             line-height: 2.4rem !important;
           }
-          .media {
+          .detailed-result__media {
             padding: 1rem 1.6rem;
+            display: block;
             @include respond_above(sm) {
               padding: 0;
             }
@@ -193,7 +194,6 @@ $gray_font_color: #abb7c4;
               .img__container {
                 position: relative;
                 width: 100%;
-                cursor: pointer;
                 border-radius: 5px;
                 overflow: hidden;
                 img {
@@ -212,6 +212,11 @@ $gray_font_color: #abb7c4;
 
               }
 
+            }
+            .no-media-found {
+              font-size: 1.6rem;
+              color: $gray_font_color;
+              font-weight: 400;
             }
           }
         }

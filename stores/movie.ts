@@ -140,7 +140,7 @@ export default class Movie {
       page,
       api_key: api_key
     };
-    if (!this.tv_popular) {
+    if (!this.tv_popular || this.tv_popular.page !== page) {
       const response = await this.store.api.fetch({ url: `${this.url.tv_base}${this.url.popular}`, form, auth: false }, 200);
       const { status } = response;
       if (!status)
@@ -148,19 +148,33 @@ export default class Movie {
     }
   }
   @action
-  fetchMovieDetail = async (id: number): Promise<void> => {
+  fetchTvTopRated = async (page?: number): Promise<void> => {
+    const form = {
+      page,
+      api_key: api_key
+    };
+    if (!this.tv_topRated || this.tv_topRated.page !== page) {
+      const response = await this.store.api.fetch({ url: `${this.url.tv_base}${this.url.topRated}`, form, auth: false }, 200);
+      const { status } = response;
+      if (!status)
+        this.tv_popular = response;
+    }
+  }
+  @action
+  fetchDetail = async (type: 'tv' | 'movie', id: number): Promise<void> => {  // common for movie and tv.
     const form = {
       api_key
     };
     if (!this.detailed_result || this.detailed_result.id !== id) {
-      const response = await this.store.api.fetch({ url: `${this.url.base}/${id}`, form, auth: false }, 200);
+      let base_url = type === 'movie' ? this.url.base : this.url.tv_base;
+      const response = await this.store.api.fetch({ url: `${base_url}/${id}`, form, auth: false }, 200);
       if (response.status && response.status === 404) {
         this.detailed_result = null;
       }
       else {
         this.detailed_result = response; // data itself
         if (this.detailed_result) {
-          const videoIDs = await this.store.api.fetch({ url: `${this.url.base}/${id}/videos`, form, auth: false }, 200);  // fetch the videoids of the movie
+          const videoIDs = await this.store.api.fetch({ url: `${base_url}/${id}/videos`, form, auth: false }, 200);  // fetch the videoids of the movie
           if (videoIDs && videoIDs.results && videoIDs.results.length > 0) { // append the video id to the detailed result
             this.detailed_result['youtube_video_id'] = videoIDs.results[0].key;
           }
@@ -169,9 +183,9 @@ export default class Movie {
     }
   }
 
-  isFavorite = (movieID: number) => {
+  isFavorite = (id: number) => {  // it checks if the movie is included in the user's favorites list.
     const { user: { favoriteIDs } } = this.store;
-    if (favoriteIDs.includes(movieID))
+    if (favoriteIDs.includes(id))
       return true;
     else
       return false;

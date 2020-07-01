@@ -198,29 +198,33 @@ const Detail: FC<IProps> = (props) => {
                       }
                       {
                         show.media &&
-                        <div className="media">
+                        <div className="detailed-result__media">
                           <div className="row">
-                            <div className="col-sm-9">
+                            <div className="col-sm-12">
                               {
                                 imagesLoading ?
                                   <p className="text-light">
                                     Loading...
                                 </p>
                                   :
-                                  related_images &&
-                                  <div className="row">
-                                    {
-                                      related_images.backdrops.map((p, index) => {
-                                        return (
-                                          <div className="media-column col-6 col-lg-4" key={index}>
-                                            <div className="img__container">
-                                              <img src={`${image_url}/w300/${p.file_path}`} ></img>
+                                  related_images && related_images.backdrops.length > 0 ?
+                                    <div className="row">
+                                      {
+                                        related_images.backdrops.map((p, index) => {
+                                          return (
+                                            <div className="media-column col-6 col-lg-4" key={index}>
+                                              <div className="img__container">
+                                                <img src={`${image_url}/w300/${p.file_path}`} ></img>
+                                              </div>
                                             </div>
-                                          </div>
-                                        );
-                                      })
-                                    }
-                                  </div>
+                                          );
+                                        })
+                                      }
+                                    </div>
+                                    :
+                                    <p className="no-media-found">
+                                      No media found.
+                                    </p>
 
                               }
 
