@@ -29,7 +29,7 @@ const MovieDetail: INextPage<Props> = ({ store }): JSX.Element => {
         <Detail type='MOVIE' movie={detailed_result} isFavorite={movie.isFavorite(detailed_result.id)} />
       </div>
       :
-      <Error statusCode={404} />
+      <Error statusCode={404} title="NO MOVIE FOUND" />
   );
 };
 
@@ -42,6 +42,7 @@ MovieDetail.getInitialProps = async (ctx: INextPageContext): Promise<Props> => {
   if (user) {
     await fetchFavoriteIDs();
   }
+  console.log(ctx.query);
   return {};
 };
 
